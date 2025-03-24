@@ -53,6 +53,7 @@ _Breaking developer changes, which may affect downstream projects or sites that 
 * Fix crash when a checkbox-field is rendered using a custom (non-`yes/no`) value ([#12078])
 * Fix a bug that caused `step_count` to be set to `NaN` when merging features with non-numeric step count values ([#12110], thanks [@JaiswalShivang])
 #### :earth_asia: Localization
+* When labelling features, match locale codes like `zh-CN` to name tags like `name:zh-Hans` ([#10911], thanks [@k-yle])
 #### :hourglass: Performance
 #### :mortar_board: Walkthrough / Help
 #### :rocket: Presets
@@ -63,6 +64,7 @@ _Breaking developer changes, which may affect downstream projects or sites that 
 * Add type annotations to `context.js` module ([#11589], thanks [@k-yle])
 
 [#9406]: https://github.com/openstreetmap/iD/issues/9406
+[#10911]: https://github.com/openstreetmap/iD/pull/10911
 [#11589]: https://github.com/openstreetmap/iD/pull/11589
 [#12010]: https://github.com/openstreetmap/iD/pull/12010
 [#12050]: https://github.com/openstreetmap/iD/issues/12050
