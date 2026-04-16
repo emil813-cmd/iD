@@ -2,7 +2,6 @@ import { select as d3_select } from 'd3-selection';
 
 import { presetManager } from '../../presets';
 import { modeSelect } from '../../modes/select';
-import { osmEntity } from '../../osm';
 import { svgIcon } from '../../svg/icon';
 import { uiSection } from '../section';
 import { t } from '../../core/localizer';
@@ -62,7 +61,7 @@ export function uiSectionSelectionList(context) {
             .filter(Boolean);
 
         var items = list.selectAll('.feature-list-item')
-            .data(entities, osmEntity.key);
+            .data(entities, d => d.key());
 
         items.exit()
             .remove();

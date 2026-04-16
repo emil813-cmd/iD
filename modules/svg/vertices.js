@@ -31,9 +31,10 @@ export function svgVertices(projection, context) {
     // Avoid exit/enter if we're just moving stuff around.
     // The node will get a new version but we only need to run the update selection.
     function fastEntityKey(d) {
+        if (typeof d === 'number') return d;
         var mode = context.mode();
         var isMoving = mode && /^(add|draw|drag|move|rotate)/.test(mode.id);
-        return isMoving ? d.id : osmEntity.key(d);
+        return isMoving ? d.id : d.key();
     }
 
 
@@ -182,7 +183,7 @@ export function svgVertices(projection, context) {
             .merge(dgroups);
 
         var viewfields = dgroups.selectAll('.viewfield')
-            .data(getDirections, function key(d) { return osmEntity.key(d); });
+            .data(getDirections, d => d instanceof osmEntity ? d.key(d) : d);
 
         // exit
         viewfields.exit()

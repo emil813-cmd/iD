@@ -20,12 +20,6 @@ export function osmEntity(attrs) {
 }
 
 
-// A function suitable for use as the second argument to d3.selection#data().
-osmEntity.key = function(entity) {
-    return entity.id + 'v' + (entity.v || 0);
-};
-
-
 osmEntity.prototype = {
 
     /** @type {Tags} */
@@ -86,6 +80,12 @@ osmEntity.prototype = {
 
     osmId: function() {
         return osmIdManager.toOSM(this.id);
+    },
+
+
+    /** A function suitable for use as the second argument to d3.selection#data() */
+    key() {
+        return this.id + 'v' + (this.v || 0);
     },
 
 

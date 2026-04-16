@@ -118,7 +118,7 @@ export function svgAreas(projection, context) {
 
         var clipPaths = context.surface().selectAll('defs').selectAll('.clipPath-osm')
            .filter(filter)
-           .data(data.clip, osmEntity.key);
+           .data(data.clip, d => d.key());
 
         clipPaths.exit()
            .remove();
@@ -152,7 +152,10 @@ export function svgAreas(projection, context) {
         var paths = areagroup
             .selectAll('path')
             .filter(filter)
-            .data(function(layer) { return data[layer]; }, osmEntity.key);
+            .data(
+                layer => data[layer],
+                d => d instanceof osmEntity ? d.key() : d,
+            );
 
         paths.exit()
             .remove();

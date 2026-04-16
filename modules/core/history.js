@@ -457,7 +457,7 @@ export function coreHistory(context) {
                 Object.keys(i.graph.entities).forEach(function(id) {
                     var entity = i.graph.entities[id];
                     if (entity) {
-                        var key = osmEntity.key(entity);
+                        var key = entity.key();
                         allEntities[key] = entity;
                         modified.push(key);
                     } else {
@@ -523,8 +523,9 @@ export function coreHistory(context) {
             if (h.version === 2 || h.version === 3) {
                 var allEntities = {};
 
-                h.entities.forEach(function(entity) {
-                    allEntities[osmEntity.key(entity)] = osmEntity(entity);
+                h.entities.forEach(function(rawEntity) {
+                    const entity = osmEntity(rawEntity);
+                    allEntities[entity.key()] = entity;
                 });
 
                 if (h.version === 3) {

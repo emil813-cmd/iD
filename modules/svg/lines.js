@@ -136,7 +136,7 @@ export function svgLines(projection, context) {
             var lines = selection
                 .selectAll('path')
                 .filter(filter)
-                .data(getPathData(isSelected), osmEntity.key);
+                .data(getPathData(isSelected), d => d instanceof osmEntity ? d.key() : d);
 
             lines.exit()
                 .remove();
