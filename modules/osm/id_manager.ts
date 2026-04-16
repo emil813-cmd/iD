@@ -1,4 +1,4 @@
-export type FeatureType = 'node' | 'way' | 'relation';
+import type { FeatureType } from './abstract-entity';
 
 /**
  * All newly created features need an ID, so this singleton
@@ -29,10 +29,6 @@ class OsmIdManager {
         return <FeatureType>(
             { c: 'changeset', n: 'node', w: 'way', r: 'relation' }[id[0]]
         );
-    }
-
-    key(entity: iD.OsmEntity) {
-        return entity.id + 'v' + (entity.v || 0);
     }
 
     newId(type: FeatureType) {

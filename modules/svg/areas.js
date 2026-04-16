@@ -5,6 +5,7 @@ import { osmEntity } from '../osm';
 import { svgPath, svgSegmentWay } from './helpers';
 import { svgTagClasses } from './tag_classes';
 import { svgTagPattern } from './tag_pattern';
+import { OsmAbstractEntity } from '../osm';
 
 export function svgAreas(projection, context) {
 
@@ -154,7 +155,7 @@ export function svgAreas(projection, context) {
             .filter(filter)
             .data(
                 layer => data[layer],
-                d => d instanceof osmEntity ? d.key() : d,
+                d => d instanceof OsmAbstractEntity ? d.key() : d,
             );
 
         paths.exit()

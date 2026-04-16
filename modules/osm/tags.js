@@ -272,6 +272,7 @@ export var osmSemipavedTags = {
     }
 };
 
+/** @type {import('../util/object').TagDictionary<true | 'coastline'>} */
 export var osmRightSideIsInsideTags = {
     'natural': {
         'cliff': true,

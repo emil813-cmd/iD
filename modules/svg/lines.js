@@ -9,6 +9,7 @@ import { svgTagClasses } from './tag_classes';
 import { osmEntity } from '../osm';
 import { utilArrayFlatten, utilArrayGroupBy } from '../util';
 import { utilDetect } from '../util/detect';
+import { OsmAbstractEntity } from '../osm';
 
 /** @param {{ [key: string ]: string }} tags */
 function onewayArrowColour(tags) {
@@ -136,7 +137,7 @@ export function svgLines(projection, context) {
             var lines = selection
                 .selectAll('path')
                 .filter(filter)
-                .data(getPathData(isSelected), d => d instanceof osmEntity ? d.key() : d);
+                .data(getPathData(isSelected), d => d instanceof OsmAbstractEntity ? d.key() : d);
 
             lines.exit()
                 .remove();
