@@ -9,7 +9,7 @@ import { actionChangeMember } from '../../actions/change_member';
 import { actionDeleteMembers } from '../../actions/delete_members';
 
 import { modeSelect } from '../../modes/select';
-import { osmEntity, osmRelation } from '../../osm';
+import { osmIdManager, osmRelation } from '../../osm';
 import { getRelationColor, isColorValid } from '../../osm/tags';
 import { services } from '../../services';
 import { svgIcon } from '../../svg/icon';
@@ -82,7 +82,7 @@ export function uiSectionRawMembershipEditor(context) {
             membership = {
                 relation: relation,
                 members: [],
-                hash: osmEntity.key(relation)
+                hash: osmIdManager.key(relation)
             };
             for (index = 0; index < relation.members.length; index++) {
                 member = relation.members[index];
@@ -99,7 +99,7 @@ export function uiSectionRawMembershipEditor(context) {
                         membership = {
                             relation: relation,
                             members: [],
-                            hash: osmEntity.key(relation)
+                            hash: osmIdManager.key(relation)
                         };
                     }
                 }
